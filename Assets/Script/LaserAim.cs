@@ -21,7 +21,9 @@ public class LaserAim : MonoBehaviour
     [Header("particle")]
     public ParticleSystem laserParticle;
 
-
+    private int LifeClick = 0;
+    private int DeathClick = 1;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -64,21 +66,42 @@ public class LaserAim : MonoBehaviour
         laser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         laserShooter.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        if (Input.GetMouseButton(LifeClick) || Input.GetMouseButton(DeathClick))
         {
             laser.SetActive(true);
-            laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ? lifeColor : deathColor;
+            laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(LifeClick) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
 
             var main = laserParticle.main;
             main.startColor = laserColor;
 
-            //Young
-            if (laserColor == lifeColor && objectTouched.tag == "enemy")
-                objectTouched.GetComponent<Enemy>().GetYoung();
-            //Old
-            else if(laserColor == deathColor && objectTouched.tag == "enemy")
-                objectTouched.GetComponent<Enemy>().GetOld();
+            if (objectTouched)
+            {
+                if (objectTouched.CompareTag("enemy"))
+                {
+                    if (Input.GetMouseButton(LifeClick))
+                    {
+                        objectTouched.GetComponent<Enemy>().GetYoung();
+                    }
+                    else
+                    {
+                        objectTouched.GetComponent<Enemy>().GetOld();
+                    }
+                }
+                
+                if (objectTouched.CompareTag("Tree"))
+                {
+                    if (Input.GetMouseButton(LifeClick))
+                    {
+                        objectTouched.GetComponent<GrowTree>().LifeLaserHit();
+                    }
+                    else
+                    {
+                        objectTouched.GetComponent<GrowTree>().DeathLaserHit();
+                    }
+                }
+            }
+            
         }
         else
             laser.SetActive(false);

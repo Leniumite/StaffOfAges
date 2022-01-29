@@ -5,21 +5,15 @@ using UnityEngine;
 
 public class GrowTree : MonoBehaviour
 {
-    public Transform treeBase;
-    public Transform treeTop;
+    public int trunkSize;
+    public int maxTrunkSize;
 
-    private static float TreeTopHeightExtend = 0.25f;
+    private Vector2 ground;
 
-    public int width;
-    public int height;
-    public int maxHeight;
-
-    [SerializeField] private float LifeTime;
-
-    public void OnValidate()
-    {
-        UpdateTreeSize();
-    }
+    public Grid grid;
+    private float cellSize;
+    
+    private float Timeline;
 
     private void Update()
     {
@@ -36,18 +30,17 @@ public class GrowTree : MonoBehaviour
 
     private void Start()
     {
-        LifeTime = height;
+        cellSize = grid.cellSize.x * transform.localScale.x;
+        
+        Timeline = trunkSize;
+        ground = transform.position - Vector3.up * (maxTrunkSize - trunkSize) * cellSize;
+        UpdateTreeSize();
     }
 
     private void UpdateTreeSize()
     {
-        height = Mathf.Clamp(height, 0, maxHeight);
-        
-        treeBase.transform.localPosition = Vector3.up * height / 2;
-        treeBase.transform.localScale = new Vector3(1, height, 1);
-
-        treeTop.transform.localPosition = Vector3.up * (TreeTopHeightExtend + height);
-        treeTop.localScale = new Vector3(width, 1, 1);
+        transform.position = ground + Vector2.up* (trunkSize - maxTrunkSize/2) * cellSize;
+        Debug.Log(trunkSize);
     }
 
     public void LifeLaserHit()
@@ -62,12 +55,12 @@ public class GrowTree : MonoBehaviour
 
     private void ChangeLifeTime(int val)
     {
-        LifeTime += Time.deltaTime * val;
-        LifeTime = Mathf.Clamp(LifeTime, 0.99f, maxHeight);
+        Timeline += Time.deltaTime * val;
+        Timeline = Mathf.Clamp(Timeline, 0.99f, maxTrunkSize);
 
-        if ((int)Mathf.Floor(LifeTime) != height)
+        if ((int)Mathf.Floor(Timeline) != trunkSize)
         {
-            height = (int)Mathf.Floor(LifeTime);
+            trunkSize = (int)Mathf.Floor(Timeline);
             UpdateTreeSize();
         }
     }
