@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class FireBall : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class FireBall : MonoBehaviour
     public int damage = 1;
 
     public Vector3 direction;
+
+    private void Start()
+    {
+        direction.Normalize();
+    }
 
     private void Update()
     {
