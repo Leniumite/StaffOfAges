@@ -14,6 +14,7 @@ public class LaserAim : MonoBehaviour
     [Header("Laser")]
     public Color lifeColor;
     public Color deathColor;
+    public ParticleSystem rayonHitEffect;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,10 @@ public class LaserAim : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(center.position, aimDir, longueurRayon + center.localScale.x);
         if (hit.collider != null)
         {
+            
+            var main = rayonHitEffect.main;
+            main.startColor = laser.GetComponent<SpriteRenderer>().color;
+            
             if (hit.collider.gameObject.tag == "enemy")
             {
                 //Debug.Log("test");
