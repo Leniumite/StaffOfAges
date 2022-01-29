@@ -8,10 +8,11 @@ public class FireBall : MonoBehaviour
     public float speed;
     public float lifeTime;
     public int damage;
+    public Vector3 direction;
 
     private void Update()
     {
-        transform.position += transform.right * speed * Time.deltaTime;
+        transform.position += direction * speed * Time.deltaTime;
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
