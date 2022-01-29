@@ -45,13 +45,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
             jumpTimer = jumpTimerBase;
             rb.velocity = Vector2.up*jumpForce;
         }
-        if(Input.GetButton("Jump") && isJumping)
+        if(Input.GetKey(KeyCode.Space) && isJumping)
         {
             if (jumpTimer > 0)
             {
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = false;  
         }
@@ -72,7 +72,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxisRaw("Move");
+        moveInput = 0;
+        if (Input.GetKey(KeyCode.Q)) moveInput -= 1;
+        if (Input.GetKey(KeyCode.D)) moveInput += 1;
         Move();
     }
 
