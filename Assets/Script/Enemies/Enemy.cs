@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour
 
     private void Shoot(Vector3 dir)
     {
-        GameObject fireball = Instantiate(projectile, transform.position, transform.rotation, transform);
+        GameObject fireball = Instantiate(projectile, transform.position, transform.rotation);
         fireball.GetComponent<FireBall>().direction = dir;
         fireball.GetComponent<FireBall>().damage = dmg;
         cooldown = savedCooldown;

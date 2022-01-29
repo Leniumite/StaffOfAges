@@ -29316,6 +29316,22 @@ PrefabInstance:
       propertyPath: longueurRayon
       value: 99
       objectReference: {fileID: 0}
+    - target: {fileID: 2013750964154847615, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: m_Size.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2013750964154847615, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: m_Size.y
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2013750964154847615, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1138789764107863777, guid: b46363fbe41e5bd4783f021a2e89115e, type: 3}
+    - target: {fileID: 2013750964154847615, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4958068225869202463, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.545
