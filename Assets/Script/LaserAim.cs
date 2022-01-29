@@ -17,7 +17,6 @@ public class LaserAim : MonoBehaviour
     public Color lifeColor;
     public Color deathColor;
     private GameObject objectTouched;
-    private int coeffRotation = 1;
     public Animator animator;
 
     [Header("particle")]
