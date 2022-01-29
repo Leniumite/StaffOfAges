@@ -30,10 +30,11 @@ public class EnemieSpawner : MonoBehaviour
         if(maxToSpawn<=0) gameObject.SetActive(false);
         
         delay -= Time.deltaTime;
-        if (delay <= 0)
+        if (delay <= 0 && CheckDistancePlayer())
         {   
             Spawn();
             delay = Random.Range(RandomDelayBetween.x, RandomDelayBetween.y);
+            maxToSpawn--;
         }
     }
 
