@@ -15,7 +15,7 @@ public class LaserAim : MonoBehaviour
     [Header("Laser")]
     public Color lifeColor;
     public Color deathColor;
-    private GameObject enemy;
+    private GameObject objectTouched;
 
 
     // Start is called before the first frame update
@@ -32,21 +32,21 @@ public class LaserAim : MonoBehaviour
         Vector3 tempDir = aimDir;
         tempDir.z = 0;
 
-        Vector2 transform2D = new Vector2(Body.position.x + (col.radius), Body.position.y);
+        Vector2 transform2D = new Vector2(Body.position.x, Body.position.y);
 
         RaycastHit2D hit = Physics2D.Raycast(Body.position, aimDir, longueurRayon + col.radius, ~LayerMask.GetMask("Default"));
         if (hit.collider != null)
         {
-            Debug.Log("test");
-            enemy = hit.collider.gameObject;
+            Debug.DrawLine(Body.position, aimDir, Color.red);
+            objectTouched = hit.collider.gameObject;
             Vector3 distToEnemy = hit.point - transform2D;
 
-            laser.transform.localScale = new Vector3(distToEnemy.magnitude, 0.5f, 0);
+            laser.transform.localScale = new Vector3(distToEnemy.magnitude - col.radius, 0.5f, 0);
             laser.transform.position = Body.position + (laser.transform.localScale.x /2 + col.radius) * tempDir.normalized;
         }
         else
         {
-            enemy = null;
+            objectTouched = null;
 
             tempPos = tempDir.normalized * longueurRayon + Body.position;
             laser.transform.position = tempDir.normalized * ((longueurRayon/2) + col.radius) + Body.position;
@@ -66,11 +66,11 @@ public class LaserAim : MonoBehaviour
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
 
             //Young
-            if (laserColor == lifeColor && enemy != null)
-                enemy.GetComponent<Enemy>().GetYoung();
+            if (laserColor == lifeColor && objectTouched.tag == "enemy")
+                objectTouched.GetComponent<Enemy>().GetYoung();
             //Old
-            else if(laserColor == deathColor && enemy != null)
-                enemy.GetComponent<Enemy>().GetOld();    
+            else if(laserColor == deathColor && objectTouched.tag == "enemy")
+                objectTouched.GetComponent<Enemy>().GetOld();
         }
         else
             laser.SetActive(false);
