@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log(isJumping);
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
