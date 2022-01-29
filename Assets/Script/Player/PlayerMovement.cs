@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
     public float moveSpeed;
 
-    private bool isGrounded;
+    [SerializeField] private bool isGrounded;
     public Transform feetPosition;
     public float checkRadius;
     public LayerMask Ground;
