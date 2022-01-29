@@ -7,13 +7,11 @@ public class FireBall : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
-    [HideInInspector] public int damage;
-    [HideInInspector] public Vector3 direction;
-
+    public int damage;
 
     private void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += transform.right * speed * Time.deltaTime;
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {

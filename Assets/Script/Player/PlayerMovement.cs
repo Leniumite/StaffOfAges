@@ -17,9 +17,12 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTimerBase;
     private float jumpTimer;
     private bool isJumping;
+    public ParticleSystem jumpParticle;
     
     private Rigidbody2D rb;
 
+    private bool moveAllowed = true;
+    
     private void Start()
     {
         if (!TryGetComponent(out rb))
@@ -28,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void SetMoveAllowed(bool b)
+    {
+        Debug.Log(b);
+        moveAllowed = b;
+    }
+    
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPosition.position, checkRadius, Ground);
@@ -47,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            jumpParticle.Play();
             isJumping = true;
             jumpTimer = jumpTimerBase;
             rb.velocity = Vector2.up*jumpForce;
@@ -73,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         moveInput = 0;
+        
         if (Input.GetKey(KeyCode.Q)) moveInput -= 1;
         if (Input.GetKey(KeyCode.D)) moveInput += 1;
         Move();
