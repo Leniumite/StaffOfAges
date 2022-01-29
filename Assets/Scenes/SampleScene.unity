@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735655746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.17, y: 0.09203613, z: 0}
+  m_LocalPosition: {x: 4.11, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -339,6 +339,34 @@ PrefabInstance:
       propertyPath: center
       value: 
       objectReference: {fileID: 1796164546}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: lifeColor.b
+      value: 0.7688679
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: lifeColor.g
+      value: 0.95526475
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: lifeColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: deathColor.b
+      value: 0.42881137
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: deathColor.g
+      value: 0.03203987
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: deathColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: longueurRayon
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 949650992236667634, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: m_IsActive
       value: 0

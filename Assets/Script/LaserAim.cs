@@ -6,15 +6,19 @@ public class LaserAim : MonoBehaviour
 {
     [Header("Aim")]
     public Transform center; //center of baby object
+    public float longueurRayon;
     [SerializeField] private GameObject laser;
     private Vector3 aimDirection;
-    private Vector3 startPosLaser;
+    private Vector3 tempPos;
+
+    [Header("Laser")]
+    public Color lifeColor;
+    public Color deathColor;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosLaser = laser.transform.position;
     }
 
     // Update is called once per frame
@@ -22,25 +26,30 @@ public class LaserAim : MonoBehaviour
     {
         // Vector between mouse and center of the player, normalized
         Vector3 aimDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - center.position;
+        aimDir = aimDir.normalized;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDir);
+        Vector2 transform2D = new Vector2(transform.position.x + (transform.localScale.x / 2), transform.position.y);
+
+        RaycastHit2D hit = Physics2D.Raycast(center.position, aimDir, longueurRayon + center.localScale.x);
         if (hit.collider != null)
         {
             if (hit.collider.gameObject.tag == "enemy")
             {
-                Debug.Log("test");
+                //Debug.Log("test");
                 GameObject enemy = hit.collider.gameObject;
-                Vector2 transform2D = new Vector2(transform.position.x + (transform.localScale.x /2), transform.position.y);
                 Vector3 distToEnemy = hit.point - transform2D;
-                
-                laser.transform.localScale = distToEnemy;
+
+                laser.transform.localScale = new Vector3(distToEnemy.magnitude, 0.5f, 0);
                 laser.transform.position = (transform2D + hit.point) / 2;
             }
         }
         else
         {
-            laser.transform.localScale = new Vector3(5, 0.5f, 0);
-            laser.transform.position = startPosLaser;
+            Vector3 tempDir = aimDir;
+            tempDir.z = 0;
+            tempPos = tempDir.normalized * longueurRayon + center.position;
+            laser.transform.position = tempDir.normalized * (longueurRayon + center.localScale.x / 2) + center.position;
+            laser.transform.localScale = new Vector3((tempPos - center.position).magnitude * 2, 0.5f, 0);
         }
 
 
@@ -49,11 +58,11 @@ public class LaserAim : MonoBehaviour
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        // Young
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             laser.SetActive(true);
-            //TODO method
+            //laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ?  lifeColor : deathColor;
+
         }
         else
             laser.SetActive(false);
