@@ -58,7 +58,7 @@ public class LaserAim : MonoBehaviour
         //Aim at
         AimInput(aimDir);
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        center.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
