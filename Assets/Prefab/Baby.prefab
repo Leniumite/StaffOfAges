@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 5174214609563855149}
   - component: {fileID: 300377516773672427}
   - component: {fileID: 5010808533749554223}
+  - component: {fileID: 3895063295380770245}
   m_Layer: 0
   m_Name: Baby
   m_TagString: Untagged
@@ -333,7 +334,7 @@ MonoBehaviour:
   moveSpeed: 12
   isGrounded: 0
   feetPosition: {fileID: 6296789128541604408}
-  checkRadius: 0.6
+  checkRadius: 0.2
   Ground:
     serializedVersion: 2
     m_Bits: 64
@@ -377,6 +378,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3895063295380770245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845786029509377946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633685b3d6413b648b461a79893dec76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 20
 --- !u!1 &6973591282079923048
 GameObject:
   m_ObjectHideFlags: 0
