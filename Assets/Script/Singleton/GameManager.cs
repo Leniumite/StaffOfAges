@@ -10,6 +10,8 @@ public class GameManager : MySingleton<GameManager>
         get { return true; }
     }
 
+    public GameObject player;
+    
     public void LevelEnd()
     {
         Debug.Log("level ended");
