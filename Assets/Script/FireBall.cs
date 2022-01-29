@@ -9,6 +9,7 @@ public class FireBall : MonoBehaviour
     public float speed;
     public float lifeTime;
     public int damage = 1;
+    [HideInInspector] public Vector3 direction;
 
     public Vector3 direction;
 
