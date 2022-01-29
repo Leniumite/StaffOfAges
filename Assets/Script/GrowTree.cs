@@ -42,7 +42,7 @@ public class GrowTree : MonoBehaviour
     private void UpdateTreeSize()
     {
         transform.position = ground + Vector2.up* trunkSize  * cellSize;
-        Debug.Log(trunkSize);
+        //Debug.Log(trunkSize);
     }
 
     public void LifeLaserHit()
