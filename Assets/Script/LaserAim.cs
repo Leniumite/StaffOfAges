@@ -14,6 +14,7 @@ public class LaserAim : MonoBehaviour
     [Header("Laser")]
     public Color lifeColor;
     public Color deathColor;
+    private GameObject enemy;
 
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class LaserAim : MonoBehaviour
             if (hit.collider.gameObject.tag == "enemy")
             {
                 //Debug.Log("test");
-                GameObject enemy = hit.collider.gameObject;
+                enemy = hit.collider.gameObject;
                 Vector3 distToEnemy = hit.point - transform2D;
 
                 laser.transform.localScale = new Vector3(distToEnemy.magnitude, 0.5f, 0);
@@ -45,6 +46,7 @@ public class LaserAim : MonoBehaviour
         }
         else
         {
+            enemy = null;
             Vector3 tempDir = aimDir;
             tempDir.z = 0;
             tempPos = tempDir.normalized * longueurRayon + center.position;
@@ -61,7 +63,15 @@ public class LaserAim : MonoBehaviour
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             laser.SetActive(true);
-            laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ?  lifeColor : deathColor;
+            laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ? lifeColor : deathColor;
+            Color laserColor = laser.GetComponent<SpriteRenderer>().color;
+
+            //Young
+            if (laserColor == lifeColor && enemy != null)
+                enemy.GetComponent<Enemy>().GetYoung();
+            //Old
+            else if(laserColor == deathColor && enemy != null)
+                enemy.GetComponent<Enemy>().GetOld();    
         }
         else
             laser.SetActive(false);
