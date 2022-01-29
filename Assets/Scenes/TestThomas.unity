@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1051570502}
   - component: {fileID: 1051570501}
   - component: {fileID: 1051570503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 1150715411}
   - component: {fileID: 1150715410}
   - component: {fileID: 1150715412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 1344124921}
   - component: {fileID: 1344124920}
   - component: {fileID: 1344124922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,6 +540,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3764386291346837608, guid: e94e538fc3118054fb738992c2ee1608, type: 3}
+      propertyPath: jumpPower
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764386291346837608, guid: e94e538fc3118054fb738992c2ee1608, type: 3}
+      propertyPath: jumpDuration
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764386291346837608, guid: e94e538fc3118054fb738992c2ee1608, type: 3}
+      propertyPath: fallMultiplier
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764386291346837608, guid: e94e538fc3118054fb738992c2ee1608, type: 3}
+      propertyPath: jumpTimeCounter
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764386291346837608, guid: e94e538fc3118054fb738992c2ee1608, type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9030255354949458922, guid: e94e538fc3118054fb738992c2ee1608, type: 3}
       propertyPath: m_Name
       value: Baby
@@ -601,7 +621,7 @@ GameObject:
   - component: {fileID: 1820880066}
   - component: {fileID: 1820880065}
   - component: {fileID: 1820880067}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

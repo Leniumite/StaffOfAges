@@ -8,61 +8,77 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
     public float moveSpeed;
 
-    private bool jump;
-    public float jumpPower;
-    public float jumpDuration;
-    private float jumpDurationBase;
-    public float fallMultiplier;
-    public float lowJumpMultiplier;
+    private bool isGrounded;
+    public Transform feetPosition;
+    public float checkRadius;
+    public LayerMask Ground;
 
+    public float jumpForce;
+    public float jumpTimerBase;
+    private float jumpTimer;
+    private bool isJumping;
+    
     private Rigidbody2D rb;
 
     private void Start()
     {
-        jumpDurationBase = jumpDuration;
         if (!TryGetComponent(out rb))
         {
             Debug.Log("no rigidbody" + name);
         }
     }
 
-    public void Update()
+    private void Update()
     {
-        jump = Input.GetButton("Jump");
-
-        moveInput = Input.GetAxis("Move");
-    }
-
-    private void FixedUpdate()
-    {
+        isGrounded = Physics2D.OverlapCircle(feetPosition.position, checkRadius, Ground);
         Jump();
-        Move();
+
+        if (moveInput > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if(moveInput<0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
     }
 
     private void Jump()
     {
-        if (jump && jumpDuration>0)
+        Debug.Log(isJumping);
+        if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            jumpDuration -= Time.deltaTime;
-
-            if (rb.velocity.y > 0)
+            isJumping = true;
+            jumpTimer = jumpTimerBase;
+            rb.velocity = Vector2.up*jumpForce;
+        }
+        if(Input.GetButton("Jump") && isJumping)
+        {
+            if (jumpTimer > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                rb.velocity = Vector2.up * jumpForce;
+                jumpTimer -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
             }
         }
-        
-        if (rb.velocity.y < 0)
+
+        if (Input.GetButtonUp("Jump"))
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            isJumping = false;  
         }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
+    }
+
+    private void FixedUpdate()
+    {
+        moveInput = Input.GetAxisRaw("Move");
+        Move();
     }
 
     private void Move()
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
     }
 }
