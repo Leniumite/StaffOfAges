@@ -18,6 +18,9 @@ public class LaserAim : MonoBehaviour
     public Color deathColor;
     private GameObject objectTouched;
 
+    [Header("particle")]
+    public ParticleSystem laserParticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,7 @@ public class LaserAim : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(Body.position, aimDir, longueurRayon + col.radius, ~LayerMask.GetMask("Default"));
         if (hit.collider != null)
         {
+            
             Debug.DrawLine(Body.position, aimDir, Color.red);
             objectTouched = hit.collider.gameObject;
             Vector3 distToEnemy = hit.point - transform2D;
@@ -65,6 +69,9 @@ public class LaserAim : MonoBehaviour
             laser.SetActive(true);
             laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
+
+            var main = laserParticle.main;
+            main.startColor = laserColor;
 
             //Young
             if (laserColor == lifeColor && objectTouched.tag == "enemy")
