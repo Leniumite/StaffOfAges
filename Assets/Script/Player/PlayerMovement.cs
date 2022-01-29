@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTimerBase;
     private float jumpTimer;
     private bool isJumping;
+    public ParticleSystem jumpParticle;
     
     private Rigidbody2D rb;
 
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            jumpParticle.Play();
             isJumping = true;
             jumpTimer = jumpTimerBase;
             rb.velocity = Vector2.up*jumpForce;
