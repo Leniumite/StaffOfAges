@@ -6,7 +6,9 @@ using UnityEngine;
 public class GrowTree : MonoBehaviour
 {
     public int trunkSize;
+    public int startTrunkSize;
     public int maxTrunkSize;
+    public float RayResistance;
 
     private Vector2 ground;
 
@@ -33,13 +35,13 @@ public class GrowTree : MonoBehaviour
         cellSize = grid.cellSize.x * transform.localScale.x;
         
         Timeline = trunkSize;
-        ground = transform.position - Vector3.up * (maxTrunkSize - trunkSize) * cellSize;
+        ground = new Vector2( transform.position.x, transform.position.y) - Vector2.up * trunkSize  * cellSize;
         UpdateTreeSize();
     }
 
     private void UpdateTreeSize()
     {
-        transform.position = ground + Vector2.up* (trunkSize - maxTrunkSize/2) * cellSize;
+        transform.position = ground + Vector2.up* trunkSize  * cellSize;
         Debug.Log(trunkSize);
     }
 
@@ -55,7 +57,7 @@ public class GrowTree : MonoBehaviour
 
     private void ChangeLifeTime(int val)
     {
-        Timeline += Time.deltaTime * val;
+        Timeline += Time.deltaTime *RayResistance* -val;
         Timeline = Mathf.Clamp(Timeline, 0.99f, maxTrunkSize);
 
         if ((int)Mathf.Floor(Timeline) != trunkSize)

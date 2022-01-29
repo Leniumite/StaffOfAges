@@ -17,7 +17,11 @@ public class LaserAim : MonoBehaviour
     public Color lifeColor;
     public Color deathColor;
     private GameObject objectTouched;
+<<<<<<< Updated upstream
     public Animator animator;
+=======
+    public float KnockBack;
+>>>>>>> Stashed changes
 
     [Header("particle")]
     public ParticleSystem laserParticle;
@@ -70,7 +74,11 @@ public class LaserAim : MonoBehaviour
 
         if (Input.GetMouseButton(LifeClick) || Input.GetMouseButton(DeathClick))
         {
+<<<<<<< Updated upstream
             animator.SetBool("isShooting", true);
+=======
+            this.gameObject.transform.position -= KnockBack * aimDir * Time.deltaTime;
+>>>>>>> Stashed changes
             laser.SetActive(true);
             laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(LifeClick) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
