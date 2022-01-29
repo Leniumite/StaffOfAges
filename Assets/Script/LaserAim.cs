@@ -66,6 +66,15 @@ public class LaserAim : MonoBehaviour
             laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
 
+<<<<<<< Updated upstream
+=======
+            var main = laserParticle.main;
+            main.startColor = laserColor;
+
+            if (objectTouched == null)
+                return;
+
+>>>>>>> Stashed changes
             //Young
             if (laserColor == lifeColor && objectTouched.tag == "enemy")
                 objectTouched.GetComponent<Enemy>().GetYoung();

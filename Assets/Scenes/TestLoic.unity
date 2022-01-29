@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 475771090}
-  followOffset: {x: 7, y: 3}
-  speed: 6
+  followOffset: {x: 10, y: 3}
+  speed: 10
 --- !u!1001 &113466496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,25 +394,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  difficultyLevel: 3
   dmg: 0
   lifeStage: 4
   sprite: {fileID: 0}
   isShieldWhite: 0
   isShieldViolet: 0
-  resToRay: 100
+  resToRay: 2
   CaC: 0
-  cooldown: 0
-  projectile: {fileID: 0}
+  cooldown: 3
+  projectile: {fileID: 5205894935551206893, guid: 8616a835c3e70ca409c392b1e15ca63d, type: 3}
   target: {fileID: 475771090}
   jumpPoints:
   - {fileID: 1509729957}
   - {fileID: 1581615566}
-  isGrounded: 0
-  feetPosition: {fileID: 0}
   checkRadius: 0.6
   Ground:
     serializedVersion: 2
     m_Bits: 0
+  jumpTreshold: 0.6
   jumpForce: 10
   jumpTimerBase: 0.12
 --- !u!50 &331714348

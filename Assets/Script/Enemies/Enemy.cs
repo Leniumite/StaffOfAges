@@ -5,8 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Variables")]
-    public float moveSpeed;
-    public int dmg;
+    /*[HideInInspector]*/ public float moveSpeed;
+    public int difficultyLevel;
+    [HideInInspector] public int dmg;
     public int lifeStage;
     public Sprite sprite;
     public bool isShieldWhite;
@@ -17,16 +18,18 @@ public class Enemy : MonoBehaviour
     [Header("Attack")]
     public bool CaC;
     public float cooldown;
+    private float savedCooldown;
     public GameObject projectile;
 
     [Header("IA")]
     public GameObject target;
+    private PlayerMovement playerMovement;
     public List<GameObject> jumpPoints = new List<GameObject>();
-    [SerializeField] private bool isGrounded;
-    public Transform feetPosition;
+    private bool isGrounded;
     public float checkRadius;
     public LayerMask Ground;
 
+    public float jumpTreshold;
     public float jumpForce;
     public float jumpTimerBase;
     private float jumpTimer;
@@ -37,6 +40,20 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerMovement = target.GetComponent<PlayerMovement>();
+        savedCooldown = cooldown;
+
+        //Init
+        if (!CaC)
+        {
+            if (lifeStage == 1)
+                dmg = 0;
+            else
+                dmg = Fibonacci(lifeStage + difficultyLevel - 3);
+
+            moveSpeed = playerMovement.moveSpeed * 0.4f; 
+        }
+
         //gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         tempRes = resToRay;
 
@@ -64,10 +81,21 @@ public class Enemy : MonoBehaviour
 
         foreach(GameObject go in jumpPoints)
         {
-            if((go.transform.position - transform.position).magnitude < 0.8)
+            if((go.transform.position - transform.position).magnitude < jumpTreshold)
             {
                 Jump();
             }
+        }
+
+        //Attack
+        cooldown -= Time.deltaTime;
+
+        if(cooldown <= 0)
+        {
+            if (!CaC)
+                Shoot(targetDir);
+            /*else
+                Attack();*/
         }
     }
 
@@ -80,10 +108,11 @@ public class Enemy : MonoBehaviour
         if(tempRes <= 0)
         {
             lifeStage--;
+            ChangeLifeStageValue();
             tempRes = resToRay;
         }
 
-        Debug.Log("young");
+        //Debug.Log("young");
     }
 
     public void GetOld()
@@ -95,10 +124,19 @@ public class Enemy : MonoBehaviour
         if (tempRes <= 0)
         {
             lifeStage++;
+            ChangeLifeStageValue();
             tempRes = resToRay;
         }
 
-        Debug.Log("Old");
+        //Debug.Log("Old");
+    }
+
+    private void Shoot(Vector3 dir)
+    {
+        GameObject fireball = Instantiate(projectile, transform.position, transform.rotation, transform);
+        fireball.GetComponent<FireBall>().direction = dir;
+        fireball.GetComponent<FireBall>().damage = dmg;
+        cooldown = savedCooldown;
     }
 
     private void Jump()
@@ -121,5 +159,24 @@ public class Enemy : MonoBehaviour
         }
 
         isJumping = false;
+    }
+
+    private int Fibonacci(int n)
+    {
+        if (n <= 1)
+            return 1;
+        else
+            return Fibonacci(n-1) + Fibonacci(n-2);
+    }
+
+    private void ChangeLifeStageValue()
+    {
+        if (!CaC)
+        {
+            if (lifeStage == 1)
+                dmg = 0;
+            else
+                dmg = Fibonacci(lifeStage + difficultyLevel - 3);
+        }
     }
 }
