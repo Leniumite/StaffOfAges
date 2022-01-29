@@ -8,6 +8,7 @@ public class LaserAim : MonoBehaviour
     public Transform Body; 
     public float longueurRayon;
     [SerializeField] private GameObject laser;
+    [SerializeField] private GameObject laserShooter;
     private Vector3 aimDirection;
     private Vector3 tempPos;
     private CircleCollider2D col;
@@ -53,11 +54,11 @@ public class LaserAim : MonoBehaviour
             laser.transform.localScale = new Vector3((tempPos - Body.position).magnitude, 0.5f, 0);
         }
 
-
         //Aim at
         AimInput(aimDir);
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         laser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        laserShooter.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {

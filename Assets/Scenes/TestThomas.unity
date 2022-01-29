@@ -210,6 +210,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: laserShooter
+      value: 
+      objectReference: {fileID: 1462123223}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: longueurRayon
       value: 5
       objectReference: {fileID: 0}
@@ -867,6 +871,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1462123223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6973591282079923048, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+  m_PrefabInstance: {fileID: 113466496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1509729957
 GameObject:
   m_ObjectHideFlags: 0
