@@ -61,8 +61,7 @@ public class LaserAim : MonoBehaviour
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             laser.SetActive(true);
-            //laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ?  lifeColor : deathColor;
-
+            laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(0) ?  lifeColor : deathColor;
         }
         else
             laser.SetActive(false);

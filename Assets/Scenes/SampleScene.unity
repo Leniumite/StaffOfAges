@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -340,6 +340,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1796164546}
     - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: lifeColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: lifeColor.b
       value: 0.7688679
       objectReference: {fileID: 0}
@@ -349,6 +353,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: lifeColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: deathColor.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1451971785020491916, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
@@ -374,6 +382,14 @@ PrefabInstance:
     - target: {fileID: 1304670345289819335, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1304670345289819335, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919357108367726573, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656147562764694935, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
       propertyPath: m_RootOrder
