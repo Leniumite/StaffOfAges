@@ -64,12 +64,7 @@ public class LaserAim : MonoBehaviour
         //Aim at
         AimInput(aimDir);
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        laser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        /*if (aimDir.x < 0)
-            laserShooter.transform.eulerAngles = new Vector3(0, 180, 0);*/
-
-        
+        laser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);        
         laserShooter.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 

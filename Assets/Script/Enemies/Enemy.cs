@@ -17,11 +17,12 @@ public class Enemy : MonoBehaviour
 
     [Header("Attack")]
     public bool CaC;
-    public float cooldown;
+    private float cooldown;
     private float savedCooldown;
     public GameObject projectile;
 
     [Header("IA")]
+    public float radiusDetection; //The radius at wich the enemy detect the player
     public GameObject target;
     private PlayerMovement playerMovement;
     public List<GameObject> jumpPoints = new List<GameObject>();
@@ -42,8 +43,7 @@ public class Enemy : MonoBehaviour
     {
         target = GameManager.Instance.player;
         playerMovement = target.GetComponent<PlayerMovement>();
-        savedCooldown = cooldown;
-
+        
         //Init
         if (!CaC)
         {
@@ -54,6 +54,14 @@ public class Enemy : MonoBehaviour
 
             moveSpeed = playerMovement.moveSpeed * 0.4f; 
         }
+        else
+        {
+            dmg = 1;
+            
+        }
+
+        cooldown = Random.Range(3, 5);
+        savedCooldown = cooldown;
 
         //gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         tempRes = resToRay;
@@ -78,6 +86,9 @@ public class Enemy : MonoBehaviour
 
         //"IA"
         Vector3 targetDir = target.transform.position - transform.position;
+        if (targetDir.magnitude >= radiusDetection)
+            return;
+
         transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
 
         foreach(GameObject go in jumpPoints)
