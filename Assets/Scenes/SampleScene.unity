@@ -320,10 +320,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   dmg: 0
-  lifeStage: 0
+  lifeStage: 2
   sprite: {fileID: 0}
   isShieldWhite: 0
   isShieldViolet: 0
+  resToRay: 1
+  CaC: 0
+  cooldown: 0
+  projectile: {fileID: 0}
 --- !u!1 &1785490871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 949650992236667634, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
