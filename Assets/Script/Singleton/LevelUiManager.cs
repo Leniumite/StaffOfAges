@@ -15,7 +15,14 @@ public class LevelUiManager : MySingleton<LevelUiManager>
 
     private void Start()
     {
-        UpdateSlider(1);
+        if (!playerHealthSlider)
+        {
+            Debug.Log("no health slider ref");
+        }
+        else
+        {
+            UpdateSlider(1);
+        }
     }
 
     public void UpdateSlider(float value)
