@@ -5,21 +5,25 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Variables")]
-    /*[HideInInspector]*/ public float moveSpeed;
+    [HideInInspector] public float moveSpeed;
     public int difficultyLevel;
     [HideInInspector] public int dmg;
     public int lifeStage;
-    public Sprite sprite;
+    private Sprite sprite;
     public bool isShieldWhite;
     public bool isShieldViolet;
     public float resToRay; //Basically seconds to get effect from the ray
     private float tempRes;
+    //public List<Sprite> spriteAges = new List<Sprite>();
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     [Header("Attack")]
     public bool CaC;
     private float cooldown;
     private float savedCooldown;
     public GameObject projectile;
+    public GameObject muzzle;
 
     [Header("IA")]
     public float radiusDetection; //The radius at wich the enemy detect the player
@@ -43,7 +47,10 @@ public class Enemy : MonoBehaviour
     {
         target = GameManager.Instance.player;
         playerMovement = target.GetComponent<PlayerMovement>();
-        
+
+        //Define the first sprite
+        ChooseSprite();
+
         //Init
         if (!CaC)
         {
@@ -63,7 +70,6 @@ public class Enemy : MonoBehaviour
         cooldown = Random.Range(3, 5);
         savedCooldown = cooldown;
 
-        //gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         tempRes = resToRay;
 
         if (!TryGetComponent(out rb))
@@ -121,10 +127,9 @@ public class Enemy : MonoBehaviour
         {
             lifeStage--;
             ChangeLifeStageValue();
+            animator.SetTrigger("Younger"); //Also change the sprite
             tempRes = resToRay;
         }
-
-        //Debug.Log("young");
     }
 
     public void GetOld()
@@ -137,14 +142,15 @@ public class Enemy : MonoBehaviour
         {
             lifeStage++;
             ChangeLifeStageValue();
+            animator.SetTrigger("Older"); //Also change the sprite
             tempRes = resToRay;
         }
-
-        //Debug.Log("Old");
     }
 
     private void Shoot(Vector3 dir)
     {
+        animator.SetTrigger("Shoot");
+        
         GameObject fireball = Instantiate(projectile, transform.position, transform.rotation);
         fireball.GetComponent<FireBall>().direction = dir;
         fireball.GetComponent<FireBall>().damage = dmg;
@@ -189,6 +195,26 @@ public class Enemy : MonoBehaviour
                 dmg = 0;
             else
                 dmg = Fibonacci(lifeStage + difficultyLevel - 3);
+        }
+    }
+
+    private void ChooseSprite()
+    {
+        switch(lifeStage)
+        {
+            case 1:
+                animator.SetTrigger("1");
+                break;
+            case 2:
+                animator.SetTrigger("2");
+                break;
+            case 3:
+                animator.SetTrigger("3");
+                break;
+            case 4:
+                animator.SetTrigger("4");
+                break;
+            default:break;
         }
     }
 }

@@ -11,11 +11,14 @@ public class FireBall : MonoBehaviour
     public int damage = 1;
     [HideInInspector] public Vector3 direction;
 
+<<<<<<< Updated upstream
     private void Start()
     {
         direction.Normalize();
     }
 
+=======
+>>>>>>> Stashed changes
     private void Update()
     {
         transform.position += direction * speed * Time.deltaTime;

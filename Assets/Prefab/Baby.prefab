@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7008487134420970081}
   - component: {fileID: 2013750964154847615}
+  - component: {fileID: 8304890591825733649}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -79,9 +80,28 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8304890591825733649
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563520748432770192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af274fe8d390ff45850a7e2810cb07c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &949650992236667634
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +338,7 @@ MonoBehaviour:
   laserShooter: {fileID: 6973591282079923048}
   lifeColor: {r: 1, g: 0.8816934, b: 0, a: 1}
   deathColor: {r: 0.60816896, g: 0, b: 0.6132076, a: 1}
+  animator: {fileID: 0}
   laserParticle: {fileID: 8751345090309113003}
 --- !u!114 &5174214609563855149
 MonoBehaviour:
@@ -338,6 +359,7 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 0}
   jumpForce: 20
   jumpTimerBase: 0.12
   jumpParticle: {fileID: 3670340723313920311}

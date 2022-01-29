@@ -18,6 +18,7 @@ public class LaserAim : MonoBehaviour
     public Color deathColor;
     private GameObject objectTouched;
     private int coeffRotation = 1;
+    public Animator animator;
 
     [Header("particle")]
     public ParticleSystem laserParticle;
@@ -70,6 +71,7 @@ public class LaserAim : MonoBehaviour
 
         if (Input.GetMouseButton(LifeClick) || Input.GetMouseButton(DeathClick))
         {
+            animator.SetBool("isShooting", true);
             laser.SetActive(true);
             laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(LifeClick) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
@@ -90,7 +92,7 @@ public class LaserAim : MonoBehaviour
                         objectTouched.GetComponent<Enemy>().GetOld();
                     }
                 }
-                
+
                 if (objectTouched.CompareTag("Tree"))
                 {
                     if (Input.GetMouseButton(LifeClick))
@@ -103,10 +105,13 @@ public class LaserAim : MonoBehaviour
                     }
                 }
             }
-            
+
         }
         else
+        {
             laser.SetActive(false);
+            animator.SetBool("isShooting", false);
+        }
     }
 
     public void AimInput(Vector3 aimDir)

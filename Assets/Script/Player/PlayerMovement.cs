@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float checkRadius;
     public LayerMask Ground;
+    public Animator animator;
 
     public float jumpForce;
     public float jumpTimerBase;
@@ -50,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
+
+        if (rb.velocity == Vector2.zero)
+            animator.SetBool("isRunning", false);
     }
 
     private void Jump()
@@ -92,5 +96,6 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        animator.SetBool("isRunning", true);
     }
 }
