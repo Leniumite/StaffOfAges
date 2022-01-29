@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
 
-    private bool moveAllowed = true;
+    public GameObject body;
     
     private void Start()
     {
@@ -31,13 +31,6 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("no rigidbody" + name);
         }
     }
-
-    public void SetMoveAllowed(bool b)
-    {
-        Debug.Log(b);
-        moveAllowed = b;
-    }
-    
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPosition.position, checkRadius, Ground);
@@ -45,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveInput > 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            body.transform.eulerAngles = new Vector3(0, 0, 0);
         }
         else if(moveInput<0)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            body.transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
         if (rb.velocity == Vector2.zero)
