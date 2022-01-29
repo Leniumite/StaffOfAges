@@ -11,8 +11,6 @@ public class FireBall : MonoBehaviour
     public int damage = 1;
     [HideInInspector] public Vector3 direction;
 
-    public Vector3 direction;
-
     private void Start()
     {
         direction.Normalize();
