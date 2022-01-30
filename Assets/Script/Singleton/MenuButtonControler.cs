@@ -8,7 +8,7 @@ public class MenuButtonControler : MonoBehaviour
     public void OnPlayClicked()
     {
         Debug.Log("click");
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene("Qscene");
     }
     
     public void OnExitClicked()
