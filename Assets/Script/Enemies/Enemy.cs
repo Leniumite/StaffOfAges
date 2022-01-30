@@ -51,10 +51,10 @@ public class Enemy : MonoBehaviour
 
         //Init
         lifeStage = Random.Range(1, 5);
+        ChooseSprite();
 
         if (!CaC)
         {
-            ChooseSprite();
             if (lifeStage == 1)
                 dmg = 0;
             else
@@ -66,8 +66,22 @@ public class Enemy : MonoBehaviour
         {
             dmg = 1;
 
-
-            
+            switch (lifeStage)
+            {
+                case 1:
+                    moveSpeed = playerMovement.moveSpeed * 1.5f;
+                    break;
+                case 2:
+                    moveSpeed = playerMovement.moveSpeed * 1;
+                    break;
+                case 3:
+                    moveSpeed = playerMovement.moveSpeed * 0.8f;
+                    break;
+                case 4:
+                    moveSpeed = playerMovement.moveSpeed * 0.5f;
+                    break;
+                default: break;
+            }
         }
 
         cooldown = Random.Range(3, 5);
@@ -212,6 +226,25 @@ public class Enemy : MonoBehaviour
                 dmg = 0;
             else
                 dmg = Fibonacci(lifeStage + difficultyLevel - 3);
+        }
+        else
+        {
+            switch(lifeStage)
+            {
+                case 1:
+                    moveSpeed = playerMovement.moveSpeed * 1.5f;
+                    break;
+                case 2:
+                    moveSpeed = playerMovement.moveSpeed * 1;
+                    break;
+                case 3:
+                    moveSpeed = playerMovement.moveSpeed * 0.8f;
+                    break;
+                case 4:
+                    moveSpeed = playerMovement.moveSpeed * 0.5f;
+                    break;
+                default:break;
+            }
         }
     }
 
