@@ -72,15 +72,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5328332788402992666, guid: 67357f08dea2fd545b60262b15dfeb3a, type: 3}
+  m_Sprite: {fileID: 6983202077367773121, guid: acaa517a36952a841a2b49070f4f7d9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.15, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8304890591825733649
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 563520748432770192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8af274fe8d390ff45850a7e2810cb07c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 242c0c62d2ba7f44791b64290fb3e165, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 3895063295380770245}
   m_Layer: 0
   m_Name: Baby
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,11 +333,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 7008487134420970081}
-  longueurRayon: 5
+  longueurRayon: 20
   laser: {fileID: 949650992236667634}
   laserShooter: {fileID: 6973591282079923048}
-  lifeColor: {r: 1, g: 0.9705882, b: 0.75, a: 1}
-  deathColor: {r: 0.60816896, g: 0, b: 0.6132076, a: 1}
+  lifeColor: {r: 0.9622642, g: 0.91842735, b: 0.44028127, a: 1}
+  deathColor: {r: 0.5283019, g: 0.032395884, b: 0.35116726, a: 1}
   animator: {fileID: 8304890591825733649}
   KnockBack: 400
   laserParticle: {fileID: 8751345090309113003}
@@ -363,7 +363,7 @@ MonoBehaviour:
   animator: {fileID: 8304890591825733649}
   jumpForce: 20
   jumpTimerBase: 0.12
-  jumpParticle: {fileID: 3670340723313920311}
+  jumpParticle: {fileID: 8979763114690820847, guid: aa39fc0addde25e47a696f6f6ee0d786, type: 3}
   body: {fileID: 563520748432770192}
 --- !u!50 &300377516773672427
 Rigidbody2D:
@@ -537,11 +537,6 @@ PrefabInstance:
 --- !u!4 &5865327138211802304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2239694723358482200, guid: aa39fc0addde25e47a696f6f6ee0d786, type: 3}
-  m_PrefabInstance: {fileID: 5652349073014649816}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3670340723313920311 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8979763114690820847, guid: aa39fc0addde25e47a696f6f6ee0d786, type: 3}
   m_PrefabInstance: {fileID: 5652349073014649816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7510605688076145737

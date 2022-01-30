@@ -14,7 +14,7 @@ public class FireBall : MonoBehaviour
     {
         direction.Normalize();
 
-        transform.localScale = new Vector3(0.25f * damage, 0.25f * damage, 1);
+        transform.localScale = new Vector3(1/16 * damage, 1/16 * damage, 1);
     }
 
     private void Update()
@@ -27,7 +27,8 @@ public class FireBall : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+
+    private void OnTriggerEnter2D (Collider2D col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
