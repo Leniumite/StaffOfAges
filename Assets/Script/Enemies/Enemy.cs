@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        cooldown = Random.Range(3, 5);
+        cooldown = Random.Range(0.3f, 1);
         savedCooldown = cooldown;
 
         tempRes = resToRay;
@@ -176,7 +176,7 @@ public class Enemy : MonoBehaviour
 
     private void Shoot(Vector3 dir)
     {
-        GameObject fireball = Instantiate(projectile, transform.position, transform.rotation, transform);
+        GameObject fireball = Instantiate(projectile, muzzle.transform.position, muzzle.transform.rotation, transform);
         fireball.GetComponent<FireBall>().direction = dir;
         fireball.GetComponent<FireBall>().damage = dmg;
     }
