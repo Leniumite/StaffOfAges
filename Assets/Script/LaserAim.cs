@@ -72,7 +72,15 @@ public class LaserAim : MonoBehaviour
         if (Input.GetMouseButton(LifeClick) || Input.GetMouseButton(DeathClick))
         {
             animator.SetBool("isShooting", true);
-            this.gameObject.transform.position -= KnockBack * aimDir * Time.deltaTime;
+
+
+            Vector2 force = -KnockBack * aimDir * Time.deltaTime;
+            Debug.Log(force);
+            if (force.y >= 2) force.y = 2;
+            
+            gameObject.GetComponent<Rigidbody2D>().AddForce(force);
+            
+            
             laser.SetActive(true);
             laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(LifeClick) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;

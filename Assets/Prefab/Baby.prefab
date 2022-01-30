@@ -333,12 +333,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 7008487134420970081}
-  longueurRayon: 3
+  longueurRayon: 5
   laser: {fileID: 949650992236667634}
   laserShooter: {fileID: 6973591282079923048}
-  lifeColor: {r: 1, g: 0.8816934, b: 0, a: 1}
+  lifeColor: {r: 1, g: 0.9705882, b: 0.75, a: 1}
   deathColor: {r: 0.60816896, g: 0, b: 0.6132076, a: 1}
-  animator: {fileID: 0}
+  animator: {fileID: 8304890591825733649}
+  KnockBack: 400
   laserParticle: {fileID: 8751345090309113003}
 --- !u!114 &5174214609563855149
 MonoBehaviour:
@@ -359,10 +360,11 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 64
-  animator: {fileID: 0}
+  animator: {fileID: 8304890591825733649}
   jumpForce: 20
   jumpTimerBase: 0.12
   jumpParticle: {fileID: 3670340723313920311}
+  body: {fileID: 563520748432770192}
 --- !u!50 &300377516773672427
 Rigidbody2D:
   serializedVersion: 4
