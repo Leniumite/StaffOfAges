@@ -6,15 +6,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int hp;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     private int maxHp;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         maxHp = hp;
     }
 
     public void getHit(int damage)
     {
+        audioSource.clip = audioClip;
+        if (audioSource.isPlaying)
+            return;
+        audioSource.Play();
         hp -= damage;
         hp = Mathf.Clamp(hp, 0, maxHp);
         LevelUiManager.Instance.UpdateSlider((float)hp / maxHp);

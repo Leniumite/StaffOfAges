@@ -12,6 +12,8 @@ public class LaserAim : MonoBehaviour
     private Vector3 aimDirection;
     private Vector3 tempPos;
     private CircleCollider2D col;
+    public List<AudioClip> audioClips;
+    private AudioSource audioSource;
 
     public Animator animator;
 
@@ -29,6 +31,7 @@ public class LaserAim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         col = GetComponent<CircleCollider2D>();
     }
 
@@ -87,10 +90,18 @@ public class LaserAim : MonoBehaviour
                     if (Input.GetMouseButton(LifeClick))
                     {
                         objectTouched.GetComponent<Enemy>().GetYoung();
+                        audioSource.clip = audioClips[0];
+                        if (audioSource.isPlaying)
+                            return;
+                        audioSource.Play();
                     }
                     else
                     {
                         objectTouched.GetComponent<Enemy>().GetOld();
+                        audioSource.clip = audioClips[1];
+                        if (audioSource.isPlaying)
+                            return;
+                        audioSource.Play();
                     }
                 }
 
@@ -99,12 +110,24 @@ public class LaserAim : MonoBehaviour
                     if (Input.GetMouseButton(LifeClick))
                     {
                         objectTouched.GetComponent<GrowTree>().LifeLaserHit();
+                        audioSource.clip = audioClips[0];
+                        if (audioSource.isPlaying)
+                            return;
+                        audioSource.Play();
                     }
                     else
                     {
                         objectTouched.GetComponent<GrowTree>().DeathLaserHit();
+                        audioSource.clip = audioClips[1];
+                        if (audioSource.isPlaying)
+                            return;
+                        audioSource.Play();
                     }
                 }
+            }
+            else
+            {
+                audioSource.Stop();
             }
 
         }
