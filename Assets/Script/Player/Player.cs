@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     public void getHit(int damage)
     {
+        Debug.Log("test");
+
         audioSource.clip = audioClip;
         if (audioSource.isPlaying)
             return;
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
+
         Debug.Log("you're deaad");
     }
 }

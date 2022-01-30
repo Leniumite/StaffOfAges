@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     [Header("Variables")]
     [HideInInspector] public float moveSpeed;
     public int difficultyLevel;
-    [HideInInspector] public int dmg;
+    public int dmg;
     [HideInInspector] public int lifeStage;
     private Sprite sprite;
     public bool isShieldWhite;

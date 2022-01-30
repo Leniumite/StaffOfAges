@@ -27,6 +27,6 @@ public class LevelUiManager : MySingleton<LevelUiManager>
 
     public void UpdateSlider(float value)
     {
-        //playerHealthSlider.value = value;
+        playerHealthSlider.value = value;
     }
 }
