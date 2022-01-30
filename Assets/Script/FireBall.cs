@@ -2,18 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
 
 public class FireBall : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
-    public int damage = 1;
+    [HideInInspector] public int damage;
     [HideInInspector] public Vector3 direction;
 
     private void Start()
     {
         direction.Normalize();
+
+        transform.localScale = new Vector3(0.25f * damage, 0.25f * damage, 1);
     }
 
     private void Update()
@@ -26,17 +27,16 @@ public class FireBall : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        //Debug.Log(col);
         if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Destroy(gameObject);
         }
         if (col.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
             col.gameObject.GetComponent<Player>().getHit(damage);
+            Destroy(gameObject);
         }
     }
 }

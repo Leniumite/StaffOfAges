@@ -13,10 +13,10 @@ public class GameManager : MySingleton<GameManager>
     }
 
     public GameObject player;
-    
+
     public void LevelEnd()
     {
         Debug.Log("level ended");
     }
-    
+
 }

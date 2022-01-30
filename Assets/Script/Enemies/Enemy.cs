@@ -8,25 +8,25 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float moveSpeed;
     public int difficultyLevel;
     [HideInInspector] public int dmg;
-    public int lifeStage;
+    [HideInInspector] public int lifeStage;
     private Sprite sprite;
     public bool isShieldWhite;
     public bool isShieldViolet;
-    public float resToRay; //Basically seconds to get effect from the ray
+    [HideInInspector] public float resToRay; //Basically seconds to get effect from the ray
     private float tempRes;
-    //public List<Sprite> spriteAges = new List<Sprite>();
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
     [Header("Attack")]
+    public float radiusDetection;
     public bool CaC;
-    private float cooldown;
+    public float cooldown;
     private float savedCooldown;
     public GameObject projectile;
     public GameObject muzzle;
+    public BoxCollider2D attackZone;
 
     [Header("IA")]
-    public float radiusDetection; //The radius at wich the enemy detect the player
     public GameObject target;
     private PlayerMovement playerMovement;
     public List<GameObject> jumpPoints = new List<GameObject>();
@@ -47,13 +47,14 @@ public class Enemy : MonoBehaviour
     {
         target = GameManager.Instance.player;
         playerMovement = target.GetComponent<PlayerMovement>();
-
-        //Define the first sprite
-        ChooseSprite();
+        savedCooldown = cooldown;
 
         //Init
+        lifeStage = Random.Range(1, 5);
+
         if (!CaC)
         {
+            ChooseSprite();
             if (lifeStage == 1)
                 dmg = 0;
             else
@@ -64,6 +65,8 @@ public class Enemy : MonoBehaviour
         else
         {
             dmg = 1;
+
+
             
         }
 
@@ -81,22 +84,29 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AdaptColliderSize();
+
         //Death
         if(lifeStage > 4 || lifeStage < 1)
-        {
             Destroy(gameObject);
-        }
 
         //Shield
 
 
         //"IA"
         Vector3 targetDir = target.transform.position - transform.position;
+
+        if(targetDir.x < 0)
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        else if (targetDir.x > 0)
+            transform.eulerAngles = new Vector3(0, 180, 0);
+
         if (targetDir.magnitude >= radiusDetection)
             return;
 
         transform.position += targetDir.normalized * moveSpeed * Time.deltaTime;
 
+        //Jump (if needed)
         foreach(GameObject go in jumpPoints)
         {
             if((go.transform.position - transform.position).magnitude < jumpTreshold)
@@ -110,10 +120,11 @@ public class Enemy : MonoBehaviour
 
         if(cooldown <= 0)
         {
+            animator.SetTrigger("Shoot");
             if (!CaC)
                 Shoot(targetDir);
-            /*else
-                Attack();*/
+            else
+                Attack();
         }
     }
 
@@ -127,9 +138,9 @@ public class Enemy : MonoBehaviour
         {
             lifeStage--;
             ChangeLifeStageValue();
-            animator.SetTrigger("Younger"); //Also change the sprite
+            animator.SetTrigger("Younger");
             tempRes = resToRay;
-        }
+        };
     }
 
     public void GetOld()
@@ -142,19 +153,25 @@ public class Enemy : MonoBehaviour
         {
             lifeStage++;
             ChangeLifeStageValue();
-            animator.SetTrigger("Older"); //Also change the sprite
+            animator.SetTrigger("Older");
             tempRes = resToRay;
         }
     }
 
     private void Shoot(Vector3 dir)
     {
-        animator.SetTrigger("Shoot");
-        
-        GameObject fireball = Instantiate(projectile, transform.position, transform.rotation);
+        GameObject fireball = Instantiate(projectile, transform.position, transform.rotation, transform);
         fireball.GetComponent<FireBall>().direction = dir;
         fireball.GetComponent<FireBall>().damage = dmg;
         cooldown = savedCooldown;
+    }
+
+    private void Attack()
+    {
+        if (!attackZone.IsTouching(target.GetComponent<CircleCollider2D>()))
+            return;
+        
+        target.GetComponent<Player>().getHit(dmg);
     }
 
     private void Jump()
@@ -215,6 +232,28 @@ public class Enemy : MonoBehaviour
                 animator.SetTrigger("4");
                 break;
             default:break;
+        }
+    }
+
+    private void AdaptColliderSize()
+    {
+        CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
+
+        switch (lifeStage)
+        {
+            case 1:
+                capsule.size = new Vector2(0.08f, 0.16f);
+                break;
+            case 2:
+                capsule.size = new Vector2(0.14f, 0.25f);
+                break;
+            case 3:
+                capsule.size = new Vector2(0.16f, 0.32f);
+                break;
+            case 4:
+                capsule.size = new Vector2(0.16f, 0.32f);
+                break;
+            default: break;
         }
     }
 }

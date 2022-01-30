@@ -84,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Q)) moveInput -= 1;
         if (Input.GetKey(KeyCode.D)) moveInput += 1;
         Move();
+
+        if (moveInput == 0)
+            animator.SetBool("isRunning", false);
     }
 
     private void Move()
