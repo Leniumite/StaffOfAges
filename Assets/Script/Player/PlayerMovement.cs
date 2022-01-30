@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float checkRadius;
     public LayerMask Ground;
     public Animator animator;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
 
     public float jumpForce;
     public float jumpTimerBase;
@@ -26,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (!TryGetComponent(out rb))
         {
             Debug.Log("no rigidbody" + name);
@@ -53,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            audioSource.clip = audioClip;
+            if (audioSource.isPlaying)
+                return;
+            audioSource.Play();
             jumpParticle.Play();
             isJumping = true;
             jumpTimer = jumpTimerBase;
