@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3886946452305009535}
   - component: {fileID: 6312179416856722452}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: Wizard
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,19 +106,18 @@ MonoBehaviour:
   isShieldWhite: 0
   isShieldViolet: 0
   resToRay: 2
-  spriteAges: []
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 0}
+  spriteRenderer: {fileID: 3886946452305009531}
+  animator: {fileID: 6312179416856722452}
   CaC: 0
   projectile: {fileID: 5205894935551206893, guid: 8616a835c3e70ca409c392b1e15ca63d, type: 3}
-  muzzle: {fileID: 0}
+  muzzle: {fileID: 5345157677884898553}
   radiusDetection: 0
-  target: {fileID: 0}
+  target: {fileID: 6845786029509377946, guid: d98eeb50d2bfd9f46bf015fde54a8bad, type: 3}
   jumpPoints: []
   checkRadius: 0.6
   Ground:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   jumpTreshold: 0
   jumpForce: 10
   jumpTimerBase: 0.12
@@ -169,7 +168,7 @@ Animator:
   m_GameObject: {fileID: 3886946452305009524}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1156bdeb891a904b85f42e605966293, type: 2}
+  m_Controller: {fileID: 9100000, guid: 35162b4ea8813884398af3d637bbccd7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
