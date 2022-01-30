@@ -7,6 +7,7 @@ public class MenuButtonControler : MonoBehaviour
 {
     public void OnPlayClicked()
     {
+        Debug.Log("click");
         //SceneManager.LoadScene();
     }
     
