@@ -139,6 +139,8 @@ public class Enemy : MonoBehaviour
                 Shoot(targetDir);
             else
                 Attack();
+
+            cooldown = savedCooldown;
         }
     }
 
@@ -177,7 +179,6 @@ public class Enemy : MonoBehaviour
         GameObject fireball = Instantiate(projectile, transform.position, transform.rotation, transform);
         fireball.GetComponent<FireBall>().direction = dir;
         fireball.GetComponent<FireBall>().damage = dmg;
-        cooldown = savedCooldown;
     }
 
     private void Attack()
