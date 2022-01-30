@@ -13,6 +13,8 @@ public class LaserAim : MonoBehaviour
     private Vector3 tempPos;
     private CircleCollider2D col;
 
+    public Animator animator;
+
     [Header("Laser")]
     public Color lifeColor;
     public Color deathColor;
@@ -21,7 +23,6 @@ public class LaserAim : MonoBehaviour
 
     [Header("particle")]
     public ParticleSystem laserParticle;
-
     private int LifeClick = 0;
     private int DeathClick = 1;
     
@@ -65,16 +66,13 @@ public class LaserAim : MonoBehaviour
         AimInput(aimDir);
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         laser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        /*if (aimDir.x < 0)
-            laserShooter.transform.eulerAngles = new Vector3(0, 180, 0);*/
-
         
         laserShooter.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
 
         if (Input.GetMouseButton(LifeClick) || Input.GetMouseButton(DeathClick))
         {
+            animator.SetBool("isShooting", true);
             laser.SetActive(true);
             laser.GetComponent<SpriteRenderer>().color = Input.GetMouseButton(LifeClick) ? lifeColor : deathColor;
             Color laserColor = laser.GetComponent<SpriteRenderer>().color;
@@ -95,7 +93,7 @@ public class LaserAim : MonoBehaviour
                         objectTouched.GetComponent<Enemy>().GetOld();
                     }
                 }
-                
+
                 if (objectTouched.CompareTag("Tree"))
                 {
                     if (Input.GetMouseButton(LifeClick))
@@ -108,10 +106,13 @@ public class LaserAim : MonoBehaviour
                     }
                 }
             }
-            
+
         }
         else
+        {
             laser.SetActive(false);
+            animator.SetBool("isShooting", false);
+        }
     }
 
     public void AimInput(Vector3 aimDir)

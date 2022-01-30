@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosition;
     public float checkRadius;
     public LayerMask Ground;
+    public Animator animator;
 
     public float jumpForce;
     public float jumpTimerBase;
@@ -87,10 +88,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Q)) moveInput -= 1;
         if (Input.GetKey(KeyCode.D)) moveInput += 1;
         Move();
+
+        if (moveInput == 0)
+            animator.SetBool("isRunning", false);
     }
 
     private void Move()
     {
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        animator.SetBool("isRunning", true);
     }
 }

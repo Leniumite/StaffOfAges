@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 67357f08dea2fd545b60262b15dfeb3a
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
+guid: 38621108dc0562e4399ef33cbe75b1e1
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -23,6 +25,37 @@ TextureImporter:
   - first:
       213: -5619191218230996321
     second: baby_6
+=======
+guid: 44bb3662cfd94404da9b7f3d8100530e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6983202077367773121
+    second: hero_0
+  - first:
+      213: 2165717997959944645
+    second: hero_1
+  - first:
+      213: -484125075312390652
+    second: hero_2
+  - first:
+      213: 4769582802073678384
+    second: hero_3
+  - first:
+      213: 6973112104302177094
+    second: hero_4
+  - first:
+      213: -7790536598922295408
+    second: hero_5
+  - first:
+      213: 6880510811088228608
+    second: hero_6
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
+=======
+guid: 05522677a6c97ca4ab8bef3b641766fa
+TextureImporter:
+  internalIDToNameTable: []
+>>>>>>> Stashed changes
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -62,7 +95,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< Updated upstream
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,6 +133,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< Updated upstream
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -112,7 +150,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_0
+=======
+      name: hero_0
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 0
@@ -126,14 +168,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: a16b3d9b07a02f940800000000000000
       internalID: 5328332788402992666
+=======
+      spriteID: 1c7a6407a4159e060800000000000000
+      internalID: 6983202077367773121
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_1
+=======
+      name: hero_1
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 16
@@ -147,14 +198,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: aa6bc74b303e37770800000000000000
       internalID: 8607472917887628970
+=======
+      spriteID: 5c992107b0d2e0e10800000000000000
+      internalID: 2165717997959944645
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_2
+=======
+      name: hero_2
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 32
@@ -168,14 +228,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: 390f0b4020105a2d0800000000000000
       internalID: -3268204846407159661
+=======
+      spriteID: 40e452b1fca0849f0800000000000000
+      internalID: -484125075312390652
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_3
+=======
+      name: hero_3
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 48
@@ -189,14 +258,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: 85a69596041a1f680800000000000000
       internalID: -8723013705222493608
+=======
+      spriteID: 032f964c946f03240800000000000000
+      internalID: 4769582802073678384
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_4
+=======
+      name: hero_4
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 64
@@ -210,14 +288,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: 0d00cd601548a1360800000000000000
       internalID: 7141165642691641552
+=======
+      spriteID: 64b68e3838875c060800000000000000
+      internalID: 6973112104302177094
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_5
+=======
+      name: hero_5
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 80
@@ -231,14 +318,23 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: ce131e0bd0a016e70800000000000000
       internalID: 9106570975438254572
+=======
+      spriteID: 0978e834d3472e390800000000000000
+      internalID: -7790536598922295408
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       name: baby_6
+=======
+      name: hero_6
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       rect:
         serializedVersion: 2
         x: 96
@@ -252,12 +348,22 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< Updated upstream:Assets/Resources/baby.png.meta
       spriteID: f92d858db5f9402b0800000000000000
       internalID: -5619191218230996321
+=======
+      spriteID: 0011620d02c7c7f50800000000000000
+      internalID: 6880510811088228608
+>>>>>>> Stashed changes:Assets/Sprites/hero.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
+=======
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+>>>>>>> Stashed changes
     outline: []
     physicsShape: []
     bones: []

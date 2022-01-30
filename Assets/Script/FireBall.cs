@@ -7,8 +7,15 @@ public class FireBall : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
-    public int damage;
-    public Vector3 direction;
+    [HideInInspector] public int damage;
+    [HideInInspector] public Vector3 direction;
+
+    private void Start()
+    {
+        direction.Normalize();
+
+        transform.localScale = new Vector3(0.25f * damage, 0.25f * damage, 1);
+    }
 
     private void Update()
     {
@@ -24,6 +31,11 @@ public class FireBall : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            Destroy(gameObject);
+        }
+        if (col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<Player>().getHit(damage);
             Destroy(gameObject);
         }
     }
