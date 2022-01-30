@@ -65,6 +65,8 @@ public class Enemy : MonoBehaviour
         else
         {
             dmg = 1;
+
+
             
         }
 
@@ -118,6 +120,7 @@ public class Enemy : MonoBehaviour
 
         if(cooldown <= 0)
         {
+            animator.SetTrigger("Shoot");
             if (!CaC)
                 Shoot(targetDir);
             else
@@ -235,43 +238,22 @@ public class Enemy : MonoBehaviour
     private void AdaptColliderSize()
     {
         CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
-        if (!CaC)
+
+        switch (lifeStage)
         {
-            switch (lifeStage)
-            {
-                case 1:
-                    capsule.size = new Vector2(0.08f, 0.16f);
-                    break;
-                case 2:
-                    capsule.size = new Vector2(0.14f, 0.25f);
-                    break;
-                case 3:
-                    capsule.size = new Vector2(0.16f, 0.32f);
-                    break;
-                case 4:
-                    capsule.size = new Vector2(0.16f, 0.32f);
-                    break;
-                default: break;
-            }
-        }
-        else
-        {
-            switch (lifeStage)
-            {
-                case 1:
-                    capsule.size = new Vector2(0.08f, 0.16f);
-                    break;
-                case 2:
-                    capsule.size = new Vector2(0.14f, 0.25f);
-                    break;
-                case 3:
-                    capsule.size = new Vector2(0.16f, 0.32f);
-                    break;
-                case 4:
-                    capsule.size = new Vector2(0.16f, 0.32f);
-                    break;
-                default: break;
-            }
+            case 1:
+                capsule.size = new Vector2(0.08f, 0.16f);
+                break;
+            case 2:
+                capsule.size = new Vector2(0.14f, 0.25f);
+                break;
+            case 3:
+                capsule.size = new Vector2(0.16f, 0.32f);
+                break;
+            case 4:
+                capsule.size = new Vector2(0.16f, 0.32f);
+                break;
+            default: break;
         }
     }
 }

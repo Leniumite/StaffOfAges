@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  difficultyLevel: 1
+  difficultyLevel: 3
   dmg: 0
   lifeStage: 2
   isShieldWhite: 0
